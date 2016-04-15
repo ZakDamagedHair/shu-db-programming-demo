@@ -48,7 +48,9 @@ app.get('/api/initiScore', function(request, response) {
 	});
 });
 
-app.get('/api/selectAll', function(request, response) {
+app.get('/api/selectAll', function(request, response) {	
+	response.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+	res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
 	var items=database.collection('score');
 	
 	var sex=parseInt(request.query.sex,10)||-1;
@@ -81,7 +83,8 @@ app.use(express.static(__dirname + '/public'));
 
 app.use(function(req, res, next) {
 	res.header("Access-Control-Allow-Origin", "*");
-	res.header("Access-Control-Allow-Headers", "X-Requested-With");
+	res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
+    res.header('Access-Control-Allow-Headers', 'Content-Type');
 	next();
 });
 
