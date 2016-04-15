@@ -49,8 +49,6 @@ app.get('/api/initiScore', function(request, response) {
 });
 
 app.get('/api/selectAll', function(request, response) {	
-	response.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
-	res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
 	var items=database.collection('score');
 	
 	var sex=parseInt(request.query.sex,10)||-1;
