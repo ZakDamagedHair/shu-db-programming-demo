@@ -51,7 +51,7 @@ app.get('/api/initiScore', function(request, response) {
 app.get('/api/selectAll', function(request, response) {	
 	var items=database.collection('score');
 	
-	var sex=parseInt(request.query.sex,10)||-1;
+	var sex=parseInt(request.query.sex,10);
 	var major=request.query.major||'';
 	var score_low=parseInt(request.query.low,10)||0;
 	var scroe_high=parseInt(request.query.high,10)||100;
@@ -81,7 +81,6 @@ app.use(express.static(__dirname + '/public'));
 
 app.use(function(req, res, next) {
 	res.header("Access-Control-Allow-Origin", "*");
-	res.header("Access-Control-Allow-Origin", "http://localhost/");
 	res.header("Access-Control-Allow-Headers", "X-Requested-With");
 	next();
 });
